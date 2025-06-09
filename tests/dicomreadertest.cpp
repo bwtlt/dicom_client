@@ -1,5 +1,5 @@
 #include <QtTest>
-#include "dicomreader.h"
+#include "src/dicomreader.h"
 
 class DicomReaderTest : public QObject {
     Q_OBJECT

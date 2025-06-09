@@ -21,12 +21,12 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Test REQUIRED)
 find_package(DCMTK REQUIRED)
 
 set(PROJECT_SOURCES
-        main.cpp
-        dicomreader.cpp
-        dicomreader.h
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+        src/main.cpp
+        src/dicomreader.cpp
+        src/dicomreader.h
+        src/mainwindow.cpp
+        src/mainwindow.h
+        src/mainwindow.ui
 )
 
 # specify DCMTK header include directories
@@ -53,7 +53,7 @@ target_link_libraries(dicom_client PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${DCMT
 enable_testing()
 
 add_executable(dicomreadertest
-    dicomreader.cpp
+    src/dicomreader.cpp
     tests/dicomreadertest.cpp)
 add_test(NAME dicomreadertest COMMAND dicomreadertest)
 
