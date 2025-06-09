@@ -17,7 +17,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_definitions(-DHAVE_CONFIG_H)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Test REQUIRED)
 find_package(DCMTK REQUIRED)
 
 set(PROJECT_SOURCES
@@ -49,3 +49,12 @@ else()
 endif()
 
 target_link_libraries(dicom_client PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${DCMTK_LIBRARIES})
+
+enable_testing()
+
+add_executable(dicomreadertest
+    dicomreader.cpp
+    tests/dicomreadertest.cpp)
+add_test(NAME dicomreadertest COMMAND dicomreadertest)
+
+target_link_libraries(dicomreadertest PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Test ${DCMTK_LIBRARIES})

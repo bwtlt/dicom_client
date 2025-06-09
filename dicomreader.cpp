@@ -23,6 +23,7 @@ void DicomReader::process() {
     if (!status.good()) {
         result["Error"] = QString::fromStdString(status.text());
         emit error("Could not open DICOM file: " + QString::fromStdString(status.text()));
+        return;
     }
 
     DcmDataset* dataset = file.getDataset();
